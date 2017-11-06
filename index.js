@@ -11,7 +11,7 @@ require('dotenv').load()
 const app = express()
 
 const routes = require('./routes')
-const { setTasks } = require('./services/tasks')
+const TasksHandlers = require('./services/tasks')
 
 app.set('view engine', 'pug')
 app.locals.moment = moment
@@ -34,7 +34,7 @@ app.use(flash());
 
 app.use((req, res, next) => {
   req.session.tasks = req.session.tasks || []
-  setTasks(req.session.tasks)
+  req.session.tasks.__proto__ = Object.assign(req.session.tasks.__proto__, TasksHandlers)
   next()
 })
 

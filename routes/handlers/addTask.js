@@ -1,8 +1,9 @@
 const { addTask } = require('../../services/tasks')
 
 function _addTask( req, res ) {
+  const { tasks } = req.session
   const { title } = req.body
-  addTask(title)
+  tasks.addTask(title)
   res.redirect("/tasks/todo")
 }
 

@@ -1,16 +1,11 @@
 const uuid = require('uuid/v1')
-let tasks
-
-function setTasks( sessionTasks ) {
-  tasks = sessionTasks
-}
 
 function getPendingTasks() {
-  return tasks.filter( task => !task.completed )
+  return this.filter( task => !task.completed )
 }
 
 function getCompletedTasks() {
-  return tasks.filter( task => task.completed )
+  return this.filter( task => task.completed )
 }
 
 function addTask(title) {
@@ -20,16 +15,16 @@ function addTask(title) {
     createdAt: +new Date(),
     completed: false
   }
-  tasks.push(newTask)
+  this.push(newTask)
 }
 
 function removeTask(id) {
-  tasks = tasks.filter( task => task.id !== id)
+  this.tasks = this.filter( task => task.id !== id)
 }
 
 function editTask(id, dataToEdit ) {
   const { completed, title } = dataToEdit
-  tasks = tasks.map( task => {
+  this.tasks = this.map( task => {
     if (task.id === id) {
       task.completed = completed || task.completed
       task.title = title || task.title
@@ -40,10 +35,10 @@ function editTask(id, dataToEdit ) {
 
 function updateAllTasks( dataToEdit ) {
   const { completed } = dataToEdit
-  tasks = tasks.map( task => {
+  this.tasks = this.map( task => {
     task.completed = completed || task.completed
     return task
   })
 }
 
-module.exports = { setTasks, getPendingTasks, getCompletedTasks, addTask, removeTask, editTask, updateAllTasks }
+module.exports = { getPendingTasks, getCompletedTasks, addTask, removeTask, editTask, updateAllTasks}
