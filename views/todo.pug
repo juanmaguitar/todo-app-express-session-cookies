@@ -1,0 +1,26 @@
+extends layout/index
+
+block content
+  .row
+    .col-md-8.col-md-offset-2
+      h1= title
+      form.form-inline.add-task-form(action='/tasks', method='POST')
+        .input-group
+          input.form-control(type='text', name='title', autofocus, placeholder='Search for...')
+          span.input-group-btn
+            button.btn.btn-default(type='submit') Add Task!
+
+      button.btn.btn-primary.btn-sm.complete-all Mark all as completed
+      ul.list-group.todo-tasks
+        each task in tasks
+          li.list-group-item.task-item(data-id=task.id)
+            .actions.pull-left
+              button.btn.btn-success.btn-xs.mark-as-done Done
+            span.title= task.title
+            small= moment(task.createdAt).format('MMMM Do YYYY, h:mm:ss a')
+            form.edit-form(action="#")
+              input.title(value=task.title)
+            button.btn.btn-primary.btn-xs.edit-task
+              i.glyphicon.glyphicon-pencil
+            .actions.pull-right
+              button.btn.btn-danger.btn-xs.remove-task Remove

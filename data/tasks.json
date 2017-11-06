@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1409f166-eabe-4975-b928-72255646d7f8",
+    "title": "Buy Milk",
+    "completed": false,
+    "createdAt":1509376585671
+  },
+  {
+    "id": "33e18bf3-8955-4117-ac1c-a6d987436fd1",
+    "title": "Buy Gold",
+    "completed": false,
+    "createdAt":1509376603049
+  },
+  {
+    "id": "20cc013e-4165-448b-8c16-82eb9aa691b6",
+    "title": "Buy Water",
+    "completed": true,
+    "createdAt":1509376608651
+  }
+]

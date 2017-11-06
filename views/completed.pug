@@ -1,0 +1,13 @@
+extends layout/index
+
+block content
+  .row
+    .col-md-8.col-md-offset-2
+      h1= title
+      ul.list-group.completed-tasks
+        each task in tasks
+          li.list-group-item.task-item(data-id=task.id)
+            span.title= task.title
+            small= moment(task.createdAt).format('MMMM Do YYYY, h:mm:ss a')
+            .actions.pull-right
+              button.btn.btn-danger.btn-xs.remove-task Remove

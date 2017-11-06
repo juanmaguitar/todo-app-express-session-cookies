@@ -1,0 +1,70 @@
+.add-task-form {
+  margin-bottom: 20px;
+}
+
+.task-item .title {
+  margin: 0 10px
+}
+
+
+.completed-tasks span {
+  text-decoration: line-through;
+}
+
+.task-item.done {
+  background: #ccc;
+}
+
+.task-item.done .mark-as-done {
+  visibility: hidden;
+}
+
+.task-item.done span {
+  text-decoration: line-through;
+}
+
+.todo-tasks .task-item {
+  cursor: pointer;
+}
+
+.todo-tasks .task-item .edit-task {
+  margin-left: 10px;
+  visibility:hidden;
+}
+
+.todo-tasks .task-item:hover .edit-task {
+  visibility:visible;
+}
+
+.todo-tasks .task-item input {
+  display: none;
+}
+
+.todo-tasks .task-item.edit-mode input {
+  display: inline;
+}
+
+.todo-tasks .task-item.edit-mode span {
+  display: none;
+}
+
+.todo-tasks .task-item.edit-mode .edit-task {
+  display: none;
+}
+
+.edit-form {
+  display: inline;
+}
+
+.complete-all {
+  margin-bottom: 20px;
+}
+
+.login-form {
+  margin-top: 50px;
+}
+
+.login-form h1 {
+  margin-bottom: 30px;
+  text-align: center;
+}
