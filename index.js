@@ -1,7 +1,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const moment = require('moment')
-const cookieSession = require('cookie-session')
+const session = require('express-session')
+const MongoDBStore = require('connect-mongodb-session')(session);
 const debug = require('debug')('middleware-log')
 const flash = require('connect-flash')
 
@@ -17,9 +18,16 @@ app.locals.moment = moment
 
 app.use(express.static('public'))
 
-app.use(cookieSession({
-  name: 'jm-cookie-session',
-  keys: ['20a69e67-7632-4650-9583-eeec24b276f0']
+const store = new MongoDBStore({
+  uri: process.env.URL_DB,
+  collection: process.env.COLLECTION_SESSIONS
+})
+
+app.use(session({
+  secret: process.env.SECRET,
+  resave: true,
+  saveUninitialized: true,
+  store: store
 }))
 
 app.use(flash());
